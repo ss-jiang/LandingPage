@@ -1,0 +1,15 @@
+.clockMain {
+    width: 100%;
+}
+
+.clockMain .display {
+    color: white;
+    font-size: 124px;
+    text-align: center;
+}
+
+.clockMain .greeting {
+    color: white;
+    font-size: 32px;
+    text-align: center;
+}

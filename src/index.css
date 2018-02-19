@@ -3,7 +3,13 @@ body {
   background-color: #66CCFF;
   font-family: sans-serif;
 }
-#container {
+
+#clock {
+  display: flex;
+  justify-content: center;
+}
+
+#todolist {
   display: flex;
   justify-content: center;
 }

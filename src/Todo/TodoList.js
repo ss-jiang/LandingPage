@@ -3,8 +3,8 @@ import TodoItems from './TodoItems';
 import './TodoList.css';
 
 class TodoList extends Component {
-    constructor(props, content) {
-        super(props, content);
+    constructor(props, context) {
+        super(props, context);
 
         this.state = {
             items : []
