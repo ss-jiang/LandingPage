@@ -1,0 +1,85 @@
+.todoListMain {
+    width: 80%;
+}
+
+.todoListMain .body input {
+    padding: 10px;
+    font-size: 32px;
+    /* border: 2px solid #FFF; */
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    text-align: center;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    text-align: center;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    text-align: center;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    text-align: center;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    text-align: center;
+}
+
+input:focus::-webkit-input-placeholder { /* WebKit browsers */
+    color: transparent;
+}
+input:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: transparent;
+}
+input:focus::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: transparent;
+}
+input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: transparent;
+}
+
+.todoListMain .body button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    margin-right: 0px;
+    background-color: #0066FF;
+    color: #FFF;
+    border: 2px solid #0066FF;
+}
+
+.todoListMain .body button:hover {
+    background-color: #003399;
+    border: 2px solid #003399;
+    cursor: pointer;
+}
+
+.todoListMain .listEntries {
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+} 
+
+.todoListMain .listEntries li {
+    color: #333;
+    background-color: rgba(255,255,255,.5);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: background-color .2s ease-out;
+    width: 99%;
+}
+
+.todoListMain .listEntries .listButton {
+    float: right;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+}
+
+.todoListMain .theList li:hover {
+    background-color: pink;
+    cursor: pointer;
+}
