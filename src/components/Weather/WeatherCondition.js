@@ -33,6 +33,7 @@ class WeatherCondition extends Component {
         return(
             <div>
                 <div className="weatherLocation">{location}</div>
+                <div className="weatherDay">Today</div>
                 <div className="weatherIconCurrent"><i class={icon}></i></div>
                 <div className="weatherCurrent">{temp}</div>
                 <div className="weatherText">{text}</div>

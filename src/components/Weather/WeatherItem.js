@@ -28,11 +28,11 @@ class WeatherItem extends Component {
 
         return(
             <div>
-                <div className="weatherDay">{day}</div>
                 <div className="weatherDate">{date}</div>
+                <div className="weatherDay">{day}</div>
                 <div className="weatherIcon"><i class={icon}></i></div>
                 <div className="weatherTemp">
-                    <div><span className="weatherHigh">{high}</span> | <span className="weatherLow">{low}</span></div>
+                    <div><span className="weatherHigh">{high} | </span><span className="weatherLow">{low}</span></div>
                 </div>
                 <div className="weatherText">{text}</div>
             </div>
