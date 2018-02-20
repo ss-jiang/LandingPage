@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Clock.css';
+import '../../css/Clock.css';
 
 class Clock extends Component {
     constructor(props, context) {
@@ -77,7 +77,8 @@ class Clock extends Component {
                 </div>
                 <div className="greeting">
                     <span>Good </span>
-                    <span>{this.state.greeting}</span>    
+                    <span>{this.state.greeting}</span>
+                    <span>, here your weather forecast</span>
                 </div>
             </div>
         );

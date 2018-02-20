@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
+.weatherDisplay {
+    font-family: "Lato", Helvetica Neue, Helvetica, sans-serif;
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    text-align: center;
+    border: slategrey 2px solid;
+}
+
+.weatherDisplay .currentCondition {
+    height: 100%;
+    width: 25%;
+    float: left;
+    overflow: hidden;
+}
+
+.weatherDisplay .weekForecast {
+    height: 100%;
+    width: 75%;
+    float: left;
+    overflow: hidden;
+}
+
+.weatherDisplay .weekForecast .forecastItem {
+    display: flex;
+    flex-direction: row;
+    
+    height: 100%;
+    width: calc(100% / 6);
+    float: left;
+}
+
+.weatherDisplay .weatherLocation {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.weatherDisplay .weatherDay {
+    /* font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif; */
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.weatherDisplay .weatherDate {
+
+}
+
+.weatherDisplay .weatherIconCurrent {
+    margin-top: 30px;
+    font-size: 100px;
+}
+
+.weatherDisplay .weatherIcon {
+    margin-top: 30px;
+    font-size: 70px;
+}
+
+.weatherDisplay .weatherCurrent {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.weatherDisplay .weatherTemp {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.weatherDisplay .weatherHigh {
+
+}
+
+.weatherDisplay .weatherText {
+
+}

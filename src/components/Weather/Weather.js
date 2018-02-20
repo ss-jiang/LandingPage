@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import WeatherCondition from './WeatherCondition';
+import WeatherItem from './WeatherItem';
+import '../../css/Weather.css';
 
 class Weather extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            city: 'Los Angeles',
-            current: {},
+            location: 'Los Angeles',
+            condition: {},
             forecast: []
         };
 
-        this.updateWeather = this.updateWeather.bind(this);
         this.getWeather = this.getWeather.bind(this);
     }
 
     componentWillMount() {
-        this.getWeather(this.state.city);
+        this.getWeather(this.state.location);
     }
 
     getUrl(city) {
@@ -42,8 +44,8 @@ class Weather extends Component {
                 return response.text();
             })
             .then(response => {
-                var result = JSON.parse(response);
-                console.log(result);
+                var weather = this.parseWeather(JSON.parse(response));
+                console.log(weather);
 
                 // result.query.results.channel.item.condition = current weather 
                 // result.query.results.channel.item.forecast[1 - 9] = 9 day forecast
@@ -52,35 +54,36 @@ class Weather extends Component {
 
 
                 this.setState({
-                    city: result.query.results.channel.location.city,
-                    current: result.query.results.channel.condition,
-                    forecast: result.query.results.channel.forecast
+                    location: (weather.location.city + "," + weather.location.region),
+                    condition: weather.condition,
+                    forecast: weather.forecast
                 });
             });
     }
 
-    // updateWeather() {
-    //     getWeather(this.state.city, function(response) {
-    //         console.log(response);
-    //         var weather =  _.map(response.list, (today) => {
-    //             return  {
-    //                 today,
-    //                 city: response.city.name,
-    //                 country: response.city.country
-    //             }
-    //         });
+    parseWeather(result) {
+        var extracted = {
+            location: result.query.results.channel.location,
+            condition: result.query.results.channel.item.condition,
+            forecast: result.query.results.channel.item.forecast.slice(1, 7)
+        }
 
-    //         this.setState({
-    //             city: this.state.city,
-    //             forecast: weather
-    //         });
-    //     }.bind(this));
-    // }
+        return extracted;
+    }
 
     render() {
         return(
             <div className="weatherDisplay">
-
+                <div className="currentCondition">
+                    <WeatherCondition weather={this.state}/>
+                </div>
+                <div className="weekForecast">
+                    {
+                        this.state.forecast.map(function(forecast) {
+                            return <div className="forecastItem" key={forecast.date}><WeatherItem weather={forecast}/></div>;
+                        })
+                    }
+                </div>
             </div>
         );
     }
