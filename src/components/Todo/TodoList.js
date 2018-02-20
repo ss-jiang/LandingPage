@@ -12,6 +12,7 @@ class TodoList extends Component {
 
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+        this.getDate = this.getDate.bind(this);
     }
 
     addItem(item) {
@@ -20,6 +21,7 @@ class TodoList extends Component {
         if (this._inputElement.value !== "") {
             itemArray.unshift({
                 text: this._inputElement.value,
+                date: this.getDate(),
                 key: Date.now()
             });
         }
@@ -43,6 +45,14 @@ class TodoList extends Component {
         this.setState({
             items: filteredArray
         });
+    }
+
+    getDate() {
+        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", " Dec"];
+        var date = new Date();
+        var date2 = (date.getDate() < 10) ? ('0' + date.getDate()) : (date.getDate());
+
+        return monthNames[date.getMonth()] + " " + date2;
     }
 
     render() {

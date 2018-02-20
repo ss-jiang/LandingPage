@@ -6,7 +6,6 @@
 .todoListMain .body input {
     padding: 10px;
     font-size: 32px;
-    /* border: 2px solid #FFF; */
     width: 100%;
     background: transparent;
     border: none;
@@ -70,6 +69,7 @@ input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
     border-radius: 5px;
     transition: background-color .2s ease-out;
     width: 99%;
+    font-size: 16px;
 }
 
 .todoListMain .listEntries .listButton {
@@ -80,7 +80,13 @@ input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
     font-size: 16px;
 }
 
-.todoListMain .theList li:hover {
+.todoListMain .listEntries li:hover {
     background-color: pink;
     cursor: pointer;
+}
+
+.todoListMain .listEntries .itemDate {
+    color: #999;
+    margin-right: 20px;
+    font-size: 12px;
 }
