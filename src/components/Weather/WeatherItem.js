@@ -28,8 +28,8 @@ class WeatherItem extends Component {
 
         return(
             <div className="forecastDay">
-                <div className="weatherDate">{date}</div>
                 <div className="weatherDay">{day}</div>
+                <div className="weatherDate">{date}</div>
                 <div className="weatherIcon"><i className={icon}></i></div>
                 <div className="weatherTemp">
                     <div><span className="weatherHigh">{high} | </span><span className="weatherLow">{low}</span></div>

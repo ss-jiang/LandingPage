@@ -2,7 +2,7 @@
 
 .weatherDisplay {
     font-family: "Lato", Helvetica Neue, Helvetica, sans-serif;
-    height: 300px;
+    height: 350px;
     width: 100%;
     overflow: hidden;
     margin: 0;
@@ -11,6 +11,7 @@
 
 .currentCondition {
     padding-top: 5px;
+    margin-left: -10px;
     height: 100%;
     width: 22%;
     float: left;
@@ -19,7 +20,10 @@
 
 .topBar {
     width: 100%;
+    margin-top: 5px;
+    padding-bottom: 5px;
     overflow-y: hidden;
+    border-bottom: gray 1px solid;
 }
 
 #c1 {
@@ -63,11 +67,12 @@
 .weatherLocation {
     font-size: 24px;
     font-weight: 700;
+
 }
 
 .weatherDay {
     font-size: 30px;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .weatherDate {
@@ -76,8 +81,9 @@
 }
 
 .weatherIconCurrent {
-    margin-top: -10px;
-    font-size: 120px;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 150px;
 }
 
 .weatherIcon {
@@ -87,9 +93,9 @@
 
 .weatherCurrent {
     text-align: center;
-    margin-top: -10px;
+    margin-top: -20px;
     margin-bottom: -2px;
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 300;
 }
 
@@ -130,7 +136,7 @@
     border: none;
     background-color: transparent;
     outline: none;
-    font-size: 12px;
+    font-size: 20px;
     color: slategray;
 }
 

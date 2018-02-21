@@ -1,4 +1,7 @@
 body {
+  max-height: 100vh;
+  margin-top: -20px;
+  overflow: hidden;
   padding: 50px;
   background-color: #66CCFF;
   font-family: sans-serif;
@@ -10,16 +13,16 @@ body {
 }
 
 #weather {
-  margin-top: 30px;
+  margin-top: 10px;
   margin-left: -58px;
   margin-right: -58px;
   display: flex;
   justify-content: center;
-  background: rgba(153, 153, 153, 0.2);
+  background: rgba(153, 153, 153, 0.3);
 }
 
 #todolist {
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }

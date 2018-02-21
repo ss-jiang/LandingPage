@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import WeatherCondition from './WeatherCondition';
 import WeatherItem from './WeatherItem';
+import Refresh from 'react-icons/lib/fa/refresh';
+import Edit from 'react-icons/lib/md/edit-location';
+import Cancel from 'react-icons/lib/md/cancel';
 import '../../css/Weather.css';
 
 class Weather extends Component {
@@ -10,12 +13,14 @@ class Weather extends Component {
         this.state = {
             location: 'Los Angeles',
             condition: {},
-            forecast: []
+            forecast: [],
+            isEditingLocation: false
         };
 
         this.getWeather = this.getWeather.bind(this);
         this.update = this.update.bind(this);
         this.changeLocation = this.changeLocation.bind(this);
+        this.openLocationInput = this.openLocationInput.bind(this);
     }
 
     componentWillMount() {
@@ -82,12 +87,51 @@ class Weather extends Component {
     }
 
     changeLocation(location) {
-        this.getWeather(location);
+        if (this._inputElement.value !== "") {
+            this.setState({
+                isEditingLocation: false
+            });
+            this.getWeather(this._inputElement.value);
+        }
+
+        location.preventDefault();
+    }
+
+    openLocationInput() {
+        this.setState({ isEditingLocation: !this.state.isEditingLocation });
     }
 
     render() {
         return(
             <div className="weatherDisplay">
+                <div className="topBar">
+                        <div id="c1">
+                            <label htmlFor="editLocation" className="locationButton" onClick={() => this.openLocationInput()}>
+                                {
+                                    this.state.isEditingLocation 
+                                    ? <Cancel/> 
+                                    : <Edit/>
+                                }
+                            </label>
+                        </div>
+                        <div id="c2">
+                            <span className="weatherLocation">
+                                {
+                                    this.state.isEditingLocation 
+                                    ? <form className="locationForm" onSubmit = {this.changeLocation}>
+                                            <input id="editLocation" ref = {(a) => this._inputElement = a} placeholder = "Location">
+                                            </input>
+                                        </form>
+                                    : <span>{this.state.location}</span>
+                                }
+                            </span>
+                        </div>
+                        <div id="c3">
+                            <button type="button" className="refreshButton" onClick={() => this.update()}>
+                                <Refresh/>
+                            </button>
+                        </div>
+                </div>
                 <div className="currentCondition">
                     <WeatherCondition weather={this.state}
                                       update={this.update}
