@@ -7,6 +7,7 @@
     overflow: hidden;
     margin: 0;
     text-align: center;
+    color: white;
 }
 
 .currentCondition {
@@ -16,6 +17,7 @@
     width: 22%;
     float: left;
     overflow: hidden;
+    background-color: rgba(153, 153, 153, 0.3);
 }
 
 .topBar {
@@ -23,7 +25,7 @@
     margin-top: 5px;
     padding-bottom: 5px;
     overflow-y: hidden;
-    border-bottom: gray 1px solid;
+    border-bottom: white 1px solid;
 }
 
 #c1 {
@@ -49,11 +51,12 @@
     width: 78%;
     float: left;
     overflow: hidden;
+    background-color: rgba(153, 153, 153, 0.3);
 }
 
 .forecastItem {
     height: 100%;
-    width: calc(100% / 6);
+    width: calc(96% / 6);
     float: left;
 
     display: flex;
@@ -124,7 +127,6 @@
     font-size: 26px;
     color: slategray;
     margin-top: -4px;
-    /* margin-right: -7px; */
 }
 
 .locationButton:hover {
@@ -147,12 +149,42 @@
 .locationForm {
     display: inline;
 }
+::-webkit-input-placeholder { /* WebKit browsers */
+    text-align: center;
+    color: white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    text-align: center;
+    color: white;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    text-align: center;
+    color: white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    text-align: center;
+    color: white;
+}
+
+input:focus::-webkit-input-placeholder { /* WebKit browsers */
+    color: transparent;
+}
+input:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: transparent;
+}
+input:focus::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: transparent;
+}
+input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: transparent;
+}
 
 .weatherLocation input {
-    font-size: 20px;
+    font-size: 24px;
+    color: white;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #000000;
+    border-bottom: white 1px solid;
     outline: none;
     text-align: center;
     width: 80%;

@@ -8,12 +8,10 @@ class Clock extends Component {
         var date = new Date();
         var hr = date.getHours();
         var min = date.getMinutes();
-        var sec = date.getSeconds();
 
         this.state = {
             hour: hr % 12 || 12,
             minute: (min < 10) ? ('0' + min) : (min),
-            second: (sec < 10) ? ('0' + sec) : (sec),
             greeting: this.updateGreeting()
         };
      
@@ -35,12 +33,10 @@ class Clock extends Component {
         var date = new Date();
         var hr = date.getHours();
         var min = date.getMinutes();
-        var sec = date.getSeconds();
 
         this.setState({
             hour: hr % 12 || 12,
             minute: (min < 10) ? ('0' + min) : (min),
-            second: (sec < 10) ? ('0' + sec) : (sec),
             greeting: this.updateGreeting()
         });
     }
@@ -72,8 +68,6 @@ class Clock extends Component {
                     <span>{this.state.hour}</span>
                     <span>:</span>
                     <span>{this.state.minute}</span>
-                    <span>:</span>
-                    <span>{this.state.second}</span>
                 </div>
                 <div className="greeting">
                     <span>Good </span>
