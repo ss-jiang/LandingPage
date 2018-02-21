@@ -53,9 +53,7 @@ var iconMap = [
 var icons = new Map(iconMap.map(icon => [icon.id, icon.name]));
 
 var getIcon = function(key) {
-    var iconType = icons.get(key);
-    console.log(iconType);
-    return ("wi wi-" + iconType);
+    return ("wi wi-" + icons.get(key));
 }
 
 export { getIcon };

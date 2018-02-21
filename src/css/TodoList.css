@@ -2,7 +2,7 @@
     width: 80%;
 }
 
-.todoListMain .body input {
+.body input {
     padding: 10px;
     font-size: 32px;
     width: 100%;
@@ -38,7 +38,7 @@ input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: transparent;
 }
 
-.todoListMain .body button {
+.body button {
     padding: 10px;
     font-size: 16px;
     margin: 10px;
@@ -48,19 +48,19 @@ input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
     border: 2px solid #0066FF;
 }
 
-.todoListMain .body button:hover {
+.body button:hover {
     background-color: #003399;
     border: 2px solid #003399;
     cursor: pointer;
 }
 
-.todoListMain .listEntries {
+.listEntries {
     list-style: none;
     padding-left: 0;
     width: 100%;
 } 
 
-.todoListMain .listEntries li {
+.listEntries li {
     color: #333;
     background-color: rgba(255,255,255,.5);
     padding: 15px;
@@ -71,7 +71,12 @@ input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
     font-size: 16px;
 }
 
-.todoListMain .listEntries .listButton {
+.listEntries li:hover {
+    background-color: pink;
+    cursor: pointer;
+}
+
+.listButton {
     float: right;
     border: none;
     background-color: transparent;
@@ -79,12 +84,7 @@ input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
     font-size: 16px;
 }
 
-.todoListMain .listEntries li:hover {
-    background-color: pink;
-    cursor: pointer;
-}
-
-.todoListMain .listEntries .itemDate {
+.itemDate {
     color: #999;
     margin-right: 20px;
     font-size: 12px;

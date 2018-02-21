@@ -11,8 +11,11 @@ body {
 
 #weather {
   margin-top: 30px;
+  margin-left: -58px;
+  margin-right: -58px;
   display: flex;
   justify-content: center;
+  background: rgba(153, 153, 153, 0.2);
 }
 
 #todolist {

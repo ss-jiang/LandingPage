@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import WeatherCondition from './WeatherCondition';
 import WeatherItem from './WeatherItem';
 import '../../css/Weather.css';
@@ -15,6 +14,8 @@ class Weather extends Component {
         };
 
         this.getWeather = this.getWeather.bind(this);
+        this.update = this.update.bind(this);
+        this.changeLocation = this.changeLocation.bind(this);
     }
 
     componentWillMount() {
@@ -44,20 +45,25 @@ class Weather extends Component {
                 return response.text();
             })
             .then(response => {
-                var weather = this.parseWeather(JSON.parse(response));
-                console.log(weather);
+                var parsed = JSON.parse(response);
 
-                // result.query.results.channel.item.condition = current weather 
-                // result.query.results.channel.item.forecast[1 - 9] = 9 day forecast
-                //      forecast[0].[ day, date, high, low, text ]
-                // result.query.results.channel.location[ city, country, region(state) ]
+                if (parsed.query.results !== null) {
+                    var weather = this.parseWeather(JSON.parse(response));
 
+                    // result.query.results.channel.item.condition = current weather 
+                    // result.query.results.channel.item.forecast[1 - 9] = 9 day forecast
+                    //      forecast[0].[ day, date, high, low, text ]
+                    // result.query.results.channel.location[ city, country, region(state) ]
 
-                this.setState({
-                    location: (weather.location.city + "," + weather.location.region),
-                    condition: weather.condition,
-                    forecast: weather.forecast
-                });
+                    this.setState({
+                        location: (weather.location.city + "," + weather.location.region),
+                        condition: weather.condition,
+                        forecast: weather.forecast
+                    });
+                }
+                else {
+                    console.log("Weather at location not available");
+                }
             });
     }
 
@@ -71,11 +77,22 @@ class Weather extends Component {
         return extracted;
     }
 
+    update() {
+        this.getWeather(this.state.location);
+    }
+
+    changeLocation(location) {
+        this.getWeather(location);
+    }
+
     render() {
         return(
             <div className="weatherDisplay">
                 <div className="currentCondition">
-                    <WeatherCondition weather={this.state}/>
+                    <WeatherCondition weather={this.state}
+                                      update={this.update}
+                                      changeLocation={this.changeLocation}
+                    />
                 </div>
                 <div className="weekForecast">
                     {
