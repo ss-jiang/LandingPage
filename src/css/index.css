@@ -1,37 +1,11 @@
 body {
   max-height: 100vh;
-  margin-top: -10px;
   overflow: hidden;
-  padding: 50px;
+  padding: 0px;
+  margin-top: -8px;
+  margin-bottom: -8px;
+  margin-left: 0px;
+  margin-right: 0px;
   font-family: sans-serif;
-  /* background-image: url("../img/bridge.jpeg"); */
-  background-image: url("../img/nature.jpeg");
-  background-size: cover;                      
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#layer {
   background-color: rgba(153, 153, 153, 0.3);
-  margin-left: -58px;
-  margin-right: -58px;
-}
-
-#clock {
-  display: flex;
-  justify-content: center;
-}
-
-#weather {
-  margin-top: 10px;
-  margin-left: -58px;
-  margin-right: -58px;
-  display: flex;
-  justify-content: center;
-}
-
-#todolist {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
 }

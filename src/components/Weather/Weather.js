@@ -4,6 +4,7 @@ import WeatherItem from './WeatherItem';
 import Refresh from 'react-icons/lib/fa/refresh';
 import Edit from 'react-icons/lib/md/edit-location';
 import Cancel from 'react-icons/lib/md/cancel';
+import { getBackground } from './getBackground';
 import '../../css/Weather.css';
 
 class Weather extends Component {
@@ -21,10 +22,26 @@ class Weather extends Component {
         this.update = this.update.bind(this);
         this.changeLocation = this.changeLocation.bind(this);
         this.openLocationInput = this.openLocationInput.bind(this);
+        this.handleBackgroundChange = this.handleBackgroundChange.bind(this);
     }
 
-    componentWillMount() {
-        this.getWeather(this.state.location);
+    componentDidMount() {
+        var prevState = localStorage.getItem('weatherState');
+        if (prevState) {
+            var parsedState = JSON.parse(prevState);
+            this.setState({
+                location: parsedState.location,
+                condition: parsedState.condition,
+                forecast: parsedState.forecast,
+                isEditingLocation: false
+            });
+            
+            this.handleBackgroundChange();
+            return;
+        }
+        else {
+            this.getWeather(this.state.location);
+        }
     }
 
     getUrl(city) {
@@ -36,21 +53,6 @@ class Weather extends Component {
 
     getWeather(city) {
         var url = this.getUrl(city);
-
-        if (this.state.location === city) {
-            var prevState = localStorage.getItem('weatherState');
-            if (prevState) {
-                var parsedState = JSON.parse(prevState);
-                this.setState({
-                    location: parsedState.location,
-                    condition: parsedState.condition,
-                    forecast: parsedState.forecast,
-                    isEditingLocation: false
-                });
-
-                return;
-            }
-        }
 
         var request = new Request(url, {
             method: 'get',
@@ -75,6 +77,8 @@ class Weather extends Component {
                         condition: weather.condition,
                         forecast: weather.forecast
                     });
+
+                    this.handleBackgroundChange();
                 }
                 else {
                     console.log("Weather at location not available");
@@ -113,6 +117,11 @@ class Weather extends Component {
         this.setState({ isEditingLocation: !this.state.isEditingLocation });
     }
 
+    handleBackgroundChange() {
+        var cond = getBackground(this.state.condition.code);
+        this.props.image(cond);
+    }
+
     render() {
         return(
             <div className="weatherDisplay">
@@ -145,10 +154,7 @@ class Weather extends Component {
                         </div>
                 </div>
                 <div className="currentCondition">
-                    <WeatherCondition weather={this.state}
-                                      update={this.update}
-                                      changeLocation={this.changeLocation}
-                    />
+                    <WeatherCondition weather={this.state}/>
                 </div>
                 <div className="weekForecast">
                     {

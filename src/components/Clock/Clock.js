@@ -72,7 +72,7 @@ class Clock extends Component {
                 <div className="greeting">
                     <span>Good </span>
                     <span>{this.state.greeting}</span>
-                    <span>, here your weather forecast</span>
+                    <span>, here's your weather forecast</span>
                 </div>
             </div>
         );
