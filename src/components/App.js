@@ -20,7 +20,6 @@ class App extends Component {
   componentWillMount() {
     var prevState = localStorage.getItem('backgroundState');
     if (prevState) {
-      var parsedState = prevState;
       this.setState({
           background: prevState
       });
@@ -28,18 +27,16 @@ class App extends Component {
   }
 
   getBackground(img) {
-    if (this.state.background !== img) {
+    if (this.state.background !== img && img !== nature) {
       this.setState({
         background: img
       });
     }
 
-    localStorage.setItem('backgroundState', JSON.stringify(this.state.background));
-    console.log(localStorage.getItem('backgroundState'));
+    localStorage.setItem('backgroundState', this.state.background);
   }
 
   render() {
-
     return (
       <div className="body" style={{ backgroundImage: `url(${this.state.background})` }}>
         <div id="layer">

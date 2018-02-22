@@ -35,7 +35,7 @@ class Weather extends Component {
                 forecast: parsedState.forecast,
                 isEditingLocation: false
             });
-            
+
             this.handleBackgroundChange();
             return;
         }

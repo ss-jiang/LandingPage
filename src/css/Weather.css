@@ -159,12 +159,12 @@
     background-color: transparent;
     outline: none;
     font-size: 26px;
-    color: slategray;
+    color: #dedede;
     margin-top: -4px;
 }
 
 .locationButton:hover {
-    color: darkslategray;
+    color: lightslategray;
 }
 
 .refreshButton {
@@ -173,11 +173,11 @@
     background-color: transparent;
     outline: none;
     font-size: 20px;
-    color: slategray;
+    color: #dedede;
 }
 
 .refreshButton:hover {
-    color: darkslategray;
+    color: lightslategray;
 }
 
 .locationForm {
