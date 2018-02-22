@@ -4,8 +4,8 @@ body {
   overflow: hidden;
   padding: 50px;
   font-family: sans-serif;
-  background-image: url("../img/golden-gate-bridge.jpeg");
-  /* background-image: url("../img/nature.jpeg"); */
+  /* background-image: url("../img/bridge.jpeg"); */
+  background-image: url("../img/nature.jpeg");
   background-size: cover;                      
   background-repeat: no-repeat;
   background-position: center;

@@ -37,6 +37,21 @@ class Weather extends Component {
     getWeather(city) {
         var url = this.getUrl(city);
 
+        if (this.state.location === city) {
+            var prevState = localStorage.getItem('weatherState');
+            if (prevState) {
+                var parsedState = JSON.parse(prevState);
+                this.setState({
+                    location: parsedState.location,
+                    condition: parsedState.condition,
+                    forecast: parsedState.forecast,
+                    isEditingLocation: false
+                });
+
+                return;
+            }
+        }
+
         var request = new Request(url, {
             method: 'get',
             headers: {
@@ -55,11 +70,6 @@ class Weather extends Component {
                 if (parsed.query.results !== null) {
                     var weather = this.parseWeather(JSON.parse(response));
 
-                    // result.query.results.channel.item.condition = current weather 
-                    // result.query.results.channel.item.forecast[1 - 9] = 9 day forecast
-                    //      forecast[0].[ day, date, high, low, text ]
-                    // result.query.results.channel.location[ city, country, region(state) ]
-
                     this.setState({
                         location: (weather.location.city + "," + weather.location.region),
                         condition: weather.condition,
@@ -69,6 +79,8 @@ class Weather extends Component {
                 else {
                     console.log("Weather at location not available");
                 }
+            }).then(result => {
+                localStorage.setItem('weatherState', JSON.stringify(this.state));
             });
     }
 

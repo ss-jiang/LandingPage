@@ -7,12 +7,19 @@ class TodoList extends Component {
         super(props, context);
 
         this.state = {
-            items : []
+            items: []
         };
 
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.getDate = this.getDate.bind(this);
+    }
+
+    componentDidMount() {
+        var prevState = localStorage.getItem('todoState'); 
+        if (prevState) {
+            this.setState({ items: JSON.parse(prevState) });
+        }
     }
 
     addItem(item) {
@@ -32,6 +39,8 @@ class TodoList extends Component {
 
         this._inputElement.value = "";
 
+        localStorage.setItem('todoState', JSON.stringify(itemArray));
+
         item.preventDefault();
     }
 
@@ -43,6 +52,8 @@ class TodoList extends Component {
         this.setState({
             items: filteredArray
         });
+
+        localStorage.setItem('todoState', JSON.stringify(filteredArray));
     }
 
     getDate() {
