@@ -1,0 +1,20 @@
+.attribution {
+    width: 100%;
+    display: flex;
+}
+
+.weatherLink {
+    display: table-cell;
+    float: left;
+    width: 100%;
+    padding-right: 4vw;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    text-align: right;
+}
+
+#wlink {
+    vertical-align: top;
+    color: lightgray;
+    text-decoration: none;
+}

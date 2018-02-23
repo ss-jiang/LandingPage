@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WeatherCondition from './WeatherCondition';
 import WeatherItem from './WeatherItem';
+import YahooAttribution from './YahooAttribution';
 import Refresh from 'react-icons/lib/fa/refresh';
 import Edit from 'react-icons/lib/md/edit-location';
 import Cancel from 'react-icons/lib/md/cancel';
@@ -15,6 +16,7 @@ class Weather extends Component {
             location: 'Los Angeles',
             condition: {},
             forecast: [],
+            attribution: null,
             isEditingLocation: false
         };
 
@@ -25,7 +27,7 @@ class Weather extends Component {
         this.handleBackgroundChange = this.handleBackgroundChange.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         var prevState = localStorage.getItem('weatherState');
         if (prevState) {
             var parsedState = JSON.parse(prevState);
@@ -33,8 +35,11 @@ class Weather extends Component {
                 location: parsedState.location,
                 condition: parsedState.condition,
                 forecast: parsedState.forecast,
+                attribution: parsedState.attribution,
                 isEditingLocation: false
             });
+
+            console.log(parsedState);
 
             this.handleBackgroundChange();
             return;
@@ -70,12 +75,13 @@ class Weather extends Component {
                 var parsed = JSON.parse(response);
 
                 if (parsed.query.results !== null) {
-                    var weather = this.parseWeather(JSON.parse(response));
+                    var weather = this.parseWeather(parsed);
 
                     this.setState({
                         location: (weather.location.city + "," + weather.location.region),
                         condition: weather.condition,
-                        forecast: weather.forecast
+                        forecast: weather.forecast,
+                        attribution: weather.attribution
                     });
 
                     this.handleBackgroundChange();
@@ -92,8 +98,11 @@ class Weather extends Component {
         var extracted = {
             location: result.query.results.channel.location,
             condition: result.query.results.channel.item.condition,
-            forecast: result.query.results.channel.item.forecast.slice(1, 7)
+            forecast: result.query.results.channel.item.forecast.slice(1, 7),
+            attribution: result.query.results.channel.link
         }
+
+        console.log(extracted);
 
         return extracted;
     }
@@ -162,6 +171,9 @@ class Weather extends Component {
                             return <div className="forecastItem" key={forecast.date}><WeatherItem weather={forecast}/></div>;
                         })
                     }
+                </div>
+                <div className="bottomBar">
+                    <YahooAttribution link={this.state.attribution}/>
                 </div>
             </div>
         );
